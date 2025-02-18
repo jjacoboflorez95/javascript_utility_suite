@@ -1,0 +1,49 @@
+body {
+	background-color: beige;
+	max-width: 500px;
+	margin: auto;
+	text-align: center;
+}
+
+header {
+	margin-bottom: 60px;
+}
+
+main {
+	margin-bottom: 20px;
+}
+
+footer {
+	color: rgb(124, 124, 124);
+}
+
+h1 {
+	font-family: "Times New Roman", Times, serif;
+}
+
+h2 {
+	letter-spacing: 1px;
+	font-style: italic;
+}
+
+img {
+	border-radius: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+#farewell {
+	font-weight: normal;
+	margin-top: 50px;
+}
+
+#history {
+	color: darkblue;
+}
+
+label {
+	font-family: Gabriola;
+	font-size: 24px;
+}

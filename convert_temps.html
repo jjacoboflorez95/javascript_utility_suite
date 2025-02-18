@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	
+    <title>Convert from Fahrenheit to Centigrade</title>
+    <link rel="icon" href="img/icons/FCIcon.jpg">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+        // Assignment 1 - Part 1 and 2: Convert Fahrenheit to Celsius
+        // GLobal variables.
+        let fahrenheitTemperature;
+        let celsiusTemperature;
+        let arrayTemperaturesCalculated = [];
+        let fahrenheitValidation = false;
+    
+        // Do while that will keep the loop as long as the user doesn't digit the number 999.
+        do {
+            fahrenheitTemperature = parseInt(prompt("Enter Fahrenheit temperature (If you want to exit the app, please digit 999)"));
+
+            /**
+			 * If statement that will validate: 
+			 * 1. If the user digits a number that is not between 0 and 100 and that is not 999 (Invalid entry).
+             * 2. If the user's input is not a number (Invalid entry).
+			 * 3. If the user digits the number 999 (To exit the program).
+			 * 4. Otherwise, the program will calculate the fahrenheit temperature. (Valid entry).
+			 */ 
+            if((fahrenheitTemperature < -100 || fahrenheitTemperature > 212) && fahrenheitTemperature != 999){
+                alert("You entered " + fahrenheitTemperature + ". \nEntry must range from -100 to +212.");
+            } else if (isNaN(fahrenheitTemperature)) { 
+                alert("You must enter a number.");
+            } else if (fahrenheitTemperature == 999){
+                fahrenheitValidation = true;
+            } else {
+                celsiusTemperature = parseInt((fahrenheitTemperature - 32) * (5/9));
+                arrayTemperaturesCalculated.push("Fahrenheit temperature is " + fahrenheitTemperature + ", Celsius temperature is " + celsiusTemperature);
+                alert("Fahrenheit temperature is " + fahrenheitTemperature + "\n\nCelsius temperature is " + celsiusTemperature);
+            }
+        } while (!fahrenheitValidation);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Convert Fahrenheit to Celsius App</h1>
+    </header>
+    <main>
+        <img src="img/FCImage.jpg" alt="">
+        <script>            
+            // It will print the calculated temperatures.
+            document.write(`<h2 id="history">Calculated Temperatures</h2>`);
+            if (arrayTemperaturesCalculated.length > 0){
+                for(let temperatureCalculated of arrayTemperaturesCalculated){                
+                    document.write(`<label>${temperatureCalculated} </label><br>`);
+                }   
+            } else {
+                document.write("<label>No temperature was entered to be calculated</label>");
+            }
+        </script>
+        <h2 id="farewell">Thanks for using the temperature converter application</h2>
+    </main>
+    <footer>
+        Copyright&copy; Juan Jacobo Florez Monroy
+    </footer>
+</body>
+</html>

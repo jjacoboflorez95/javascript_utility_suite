@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Show letter grade</title>
+	<link rel="icon" href="img/icons/GLIcon.jpg">
+    <link rel="stylesheet" href="css/main.css">
+	<script>
+		// Assignment 1 - Part 3: Convert number grades to letter grades.
+		// GLobal variables.
+		let numberGrade;	
+		let numberGradeValidation = false;			
+		let finalMessage = "";
+
+		let arrayNumbersGradesRange = [88, 80, 68, 60, 0];
+		let arrayLettersGradesRange = ["A", "B", "C", "D", "F"];
+		let arrayLettersGrades = [];
+
+		// Do while that will keep the loop as long as the user doesn't digit the number 999.
+		do {
+			numberGrade = parseInt(prompt("Enter number grade from 0 through 100 \n" +
+								 "Or enter 999 to end entries"));
+			
+			/**
+			 * If statement that will validate: 
+			 * 1. If the user digits the number 999 (To exit the program).
+			 * 2. If the user digits a number that is not between 0 and 100 (Invalid entry).
+			 * 3. Otherwise, the program will calculate the letter grade. (Valid entry).
+			 */ 
+			if(numberGrade == 999){
+				numberGradeValidation = true;
+			} else if(numberGrade < 0 || numberGrade > 100) {
+				alert(`You entered ${numberGrade}. \nEntry must range from 0 to 100.`);
+			} else if (isNaN(numberGrade)) { 				
+                alert("You must enter a number.");
+            } else {
+				let index;				
+				for(let i in arrayNumbersGradesRange) {
+					if(numberGrade >= arrayNumbersGradesRange[i]) {
+						index = i;						
+						break;
+					}
+				}
+				arrayLettersGrades.push("Number grade = " + numberGrade + ". \nLetter grade = " + arrayLettersGradesRange[index] + ".");
+			}
+		} while(!numberGradeValidation);
+		
+		
+		//If statement that will validate if the user digited entries or no.		 		 
+		if(arrayLettersGrades.length != 0){
+			for(let i in arrayLettersGrades){
+				finalMessage += "Entry #" +(parseInt(i)+1) + "\n" +  arrayLettersGrades[i] + "\n\n";
+			}
+			alert(finalMessage);
+		} else {
+			alert("No grade was entered to be calculated.");
+		}
+	</script>
+</head>
+<body>
+	<header>
+        <h1>Grade to Letter Grades App</h1>
+    </header>
+    <main>
+        <img src="img/GLImage.jpg" alt="">
+		<script>            
+            // It will print the graded letters.
+            document.write(`<h2 id="history">Graded Letters</h2>`);            
+			if (arrayLettersGrades.length > 0){
+                for(let LetterGrade of arrayLettersGrades){                
+                	document.write(`<label>${LetterGrade} </label><br>`);
+            	}   
+            } else {
+                document.write("<label>No grade was entered to be calculated</label>");
+            }                       
+        </script>        
+        <h2 id="farewell">Thanks for using the grades to letter grade application</h2>
+    </main>
+    <footer>
+        Copyright&copy; Juan Jacobo Florez Monroy
+    </footer>
+</body>
+</html>
